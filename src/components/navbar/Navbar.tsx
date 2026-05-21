@@ -2,12 +2,12 @@ import './Navbar.css';
 import ThemeSwitch from '../theme-switch/ThemeSwitch';
 
 const NAV_ITEMS = [
-    { name: 'Browse', link: '/browse' },
+    { name: 'Browse', link: '/' },
     { name: 'History', link: '/history' },
 ]
 
 export const Navbar: React.FC = () => {
-    const currentPath = window.location.pathname || '/browse';
+    const currentPath = window.location.pathname || '/';
 
     return (
         <nav className="navbar">

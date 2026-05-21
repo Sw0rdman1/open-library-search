@@ -8,7 +8,6 @@
 }
 
 .navbar-container {
-  max-width: 1200px;
   margin: 0 auto;
   padding: 1rem 2rem;
   display: flex;
@@ -18,15 +17,18 @@
 }
 
 /* Title on Left */
+
 .navbar-title {
-  flex: 0 0 auto;
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
 }
 
 .navbar-title h1 {
   margin: 0;
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--text);
+  color: var(--accent);
   white-space: nowrap;
 }
 
@@ -46,7 +48,6 @@
   font-weight: 500;
   padding: 0.5rem 1rem;
   border-radius: 4px;
-  transition: all 0.3s ease;
   position: relative;
 }
 
@@ -75,12 +76,16 @@
   transform: scaleX(1);
 }
 
-/* Theme Switch on Right */
+.menu-item.active::after {
+  transform: scaleX(1);
+}
+
 .navbar-theme {
-  flex: 0 0 auto;
+    flex: 1;
 }
 
 .theme-toggle {
+  flex: 1;
   background: none;
   border: 2px solid var(--navbar-text);
   padding: 0.6rem 0.8rem;
@@ -89,18 +94,10 @@
   font-size: 1.2rem;
   display: flex;
   align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
+  justify-content: flex-end;
   color: var(--navbar-text);
 }
 
-.theme-toggle:hover {
-  transform: scale(1.1);
-}
-
-.theme-toggle:active {
-  transform: scale(0.95);
-}
 
 .icon {
   display: inline-block;
