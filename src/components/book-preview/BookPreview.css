@@ -1,7 +1,7 @@
 .carousel-wrapper {
   position: relative;
-  width: 360px;
-  height: 520px;
+  width: 320px;
+  height: 460px;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -22,8 +22,8 @@
 
 .card {
   position: absolute;
-  width: 280px;
-  height: 430px;
+  width: 240px;
+  height: 400px;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);

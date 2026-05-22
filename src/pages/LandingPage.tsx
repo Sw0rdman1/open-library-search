@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import BooksPreview from '../components/book-preview/BookPreview';
+import RecentHistory from '../components/recent-history/RecentHistory';
 import SocialProof from '../components/social-proof/SocialProof';
 import SearchBar from '../components/search-bar/SearchBar';
 import SearchResults from '../components/search-results/SearchResults';
@@ -47,8 +48,8 @@ const LandingPage = () => {
                     <BooksPreview books={booksToShow} loading={loading} error={error} />
                 </div>
             </div>
-
-            <SearchResults ref={searchResultsRef} results={results} query={query} loading={loading} />
+            <SearchResults ref={searchResultsRef} results={results} query={query} />
+            <RecentHistory />
         </div>
     )
 }

@@ -1,9 +1,9 @@
 .search-results-container {
     width: 100%;
-    padding: 4rem 2rem;
-    background: var(--bg-secondary, #f9f7f4);
+    padding:  2rem;
+    background: var(--bg, #f9f7f4);
     border-top: 1px solid var(--border-color, #e5e5e5);
-    margin-top: 3rem;
+    margin-top: 1rem;
     box-sizing: border-box;
 }
 
@@ -24,6 +24,12 @@
 .results-count {
     font-size: 1rem;
     color: var(--text-secondary, #666);
+}
+
+.search-results-note {
+    margin-top: 0.5rem;
+    color: var(--text-secondary, #777);
+    font-size: 0.95rem;
 }
 
 .search-results-grid {
@@ -83,7 +89,6 @@
     margin-bottom: 0.75rem;
     line-height: 1.4;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -93,7 +98,6 @@
     color: var(--text-secondary, #666);
     margin: 0;
     display: -webkit-box;
-    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }

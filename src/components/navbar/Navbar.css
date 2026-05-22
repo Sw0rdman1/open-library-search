@@ -1,6 +1,6 @@
 /* Navbar Container */
 .navbar {
-  background-color: var(--header);
+  background-color: var(--bg-secondary);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;

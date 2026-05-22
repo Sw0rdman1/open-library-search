@@ -1,0 +1,104 @@
+.recent-history-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 2rem auto 0;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+.recent-history-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.recent-history-header h2 {
+  margin: 0;
+  font-size: 1.75rem;
+  color: var(--text-primary, #1a1a1a);
+}
+
+.recent-history-header p {
+  margin: 0.35rem 0 0;
+  color: var(--text-secondary, #666);
+  font-size: 0.95rem;
+}
+
+.recent-history-link {
+  color: var(--accent, #4f46e5);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.recent-history-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 0.85rem;
+}
+
+.recent-history-grid.recent-history-single {
+  grid-template-columns: repeat(2, minmax(130px, 180px));
+  justify-content: flex-start;
+}
+
+.recent-history-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 180px;
+  border-radius: 16px;
+  background: var(--bg-primary, #ffffff);
+  border: 1px dashed var(--border-color, #dcdcdc);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.recent-history-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+.recent-history-see-all {
+  padding: 1.5rem;
+}
+
+.see-all-content {
+  text-align: center;
+}
+
+.see-all-content span {
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.see-all-content p {
+  margin: 0;
+  color: var(--text-secondary, #666);
+  font-size: 0.95rem;
+}
+
+.recent-history-empty-state {
+  background: var(--bg-secondary, #f7f5f1);
+  border-radius: 18px;
+  padding: 1.5rem;
+  color: var(--text-secondary, #666);
+}
+
+.recent-history-empty-state p {
+  margin: 1rem 0 0;
+}
+
+:root[data-theme="dark"] .recent-history-container {
+  background: transparent;
+}
+
+@media (max-width: 768px) {
+  .recent-history-grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+}
