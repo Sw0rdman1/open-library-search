@@ -1,25 +1,36 @@
 import { useEffect, useState } from "react";
-import type { Book } from "../../types";
+import type { BookPreview } from "../../types";
+import { getCoverUrl } from "../../utils/api";
+import { BounceLoader } from "react-spinners";
+import noResult from '../../assets/no-result.svg';
 
 import './BookPreview.css';
 
+
 interface Props {
-    books: Book[];
+    books: BookPreview[];
+    loading: boolean;
+    error: string | null;
     interval?: number;
 }
 
-export default function StackedBookCarousel({
-    books,
-    interval = 3000,
-}: Props) {
+export default function StackedBookCarousel({ books, loading, error, interval = 3000 }: Props) {
     const [activeIndex, setActiveIndex] = useState(0);
+    const [stackKey, setStackKey] = useState(0);
 
     const next = () => {
+        if (books.length === 0) return;
         setActiveIndex((prev) => (prev + 1) % books.length);
     };
 
+    useEffect(() => {
+        setActiveIndex(0);
+        setStackKey((prev) => prev + 1);
+    }, [books]);
 
     useEffect(() => {
+        if (books.length === 0) return;
+
         const id = setInterval(() => {
             next();
         }, interval);
@@ -28,21 +39,40 @@ export default function StackedBookCarousel({
     }, [books.length, interval]);
 
     const getIndex = (index: number) => {
-        return (index - activeIndex + books.length) % books.length;
+        return books.length === 0 ? 0 : (index - activeIndex + books.length) % books.length;
     };
+
+    if (loading) {
+        return (
+            <div className="carousel-wrapper">
+                <BounceLoader color="var(--accent)" />
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div className="carousel-wrapper">
+                <div className="error-message">
+                    <img src={noResult} alt="No results found" />
+                    <p>{error}</p>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="carousel-wrapper">
-            <div className="stack">
+            <h2 className="results-count"><span className="highlight">Biblios</span> top picks</h2>
+            <div key={stackKey} className="stack">
                 {books.map((book, index) => {
                     const pos = getIndex(index);
-
                     return (
-                        <div key={book.title} className={`card pos-${pos}`}>
-                            <div className="book-cover" style={{ backgroundImage: `url(${book.image})` }} />
+                        <div key={book.key} className={`card pos-${pos}`}>
+                            <div className="book-cover" style={{ backgroundImage: `url(${getCoverUrl(book.coverId)})` }} />
                             <div className="book-meta">
                                 <h3>{book.title}</h3>
-                                <p>{book.author}</p>
+                                <p>{book.author_name.join(', ')}</p>
                             </div>
                         </div>
                     );
