@@ -1,15 +1,16 @@
+
 :root {
-  --bg: #F5F0E8;
+  --bg: #fff;
   --text: #1a1714;
   --text-h: #08060d;
-  --header: #EDE8DC;
+  --header: whitesmoke;
   --border: #e5e4e7;
-  --accent: #C4622D;
-  --accent-light: #E8835A;
+  --accent: #009688;
+  --accent-light: #00796B;
   --muted: #8B7D6B;
 
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading:  system-ui, 'Segoe UI', Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
 
   font: 18px/145% var(--sans);
@@ -29,13 +30,13 @@
 }
 
 :root[data-theme='dark'] {
-  --bg: #1A1714;         
+  --bg: #000;         
   --text: #F5F0E8;         
   --text-h: #FFFFFF;       
   --header: #24201C;
   --border: #2D2824;       
-  --accent: #E8835A;
-  --accent-light: #C4622D;
+  --accent: #009688;
+  --accent-light: #00796B;
   --muted: #A39685;
 }
 

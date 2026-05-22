@@ -12,9 +12,8 @@ export const Navbar: React.FC = () => {
     return (
         <nav className="navbar">
             <div className="navbar-container">
-                {/* Title on left */}
                 <div className="navbar-title">
-                    <h1>Open Library Search</h1>
+                    <h1>Biblios</h1>
                 </div>
 
                 {/* Menu items in center */}
