@@ -1,6 +1,7 @@
 import BooksPreview from '../components/book-preview/BookPreview';
+import SocialProof from '../components/social-proof/SocialProof';
+import { Search } from 'lucide-react';
 import './LandingPage.css';
-import { Book, Search } from 'lucide-react';
 
 const books = [
     {
@@ -66,21 +67,7 @@ const LandingPage = () => {
                         <button className="tag-pill">Misterija</button>
                     </div>
 
-
-
-                    <div className="info-container">
-                        <Book color='var(--accent)' size={16} />
-                        <p>Discover millions of books around the world and find your next favorite read</p>
-                    </div>
-                    <div className="social-proof-container">
-                        <div className="avatars">
-                            {/* Placeholderi za slike korisnika - zameni sa <img> tagovima po potrebi */}
-                            <div className="avatar" style={{ backgroundColor: '#ef4444' }}></div>
-                            <div className="avatar" style={{ backgroundColor: '#3b82f6' }}></div>
-                            <div className="avatar" style={{ backgroundColor: '#10b981' }}></div>
-                        </div>
-                        <p className="social-text">Pridruži se 10.000+ čitalaca</p>
-                    </div>
+                    <SocialProof />
                 </div>
 
                 <div className='right-section'>

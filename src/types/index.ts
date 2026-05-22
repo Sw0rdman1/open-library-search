@@ -1,6 +1,7 @@
 type Theme = 'light' | 'dark';
+type AvatarGender = 'men' | 'women';
 
-export type { Theme };
+export type { Theme, AvatarGender };
 
 export type Book = {
     image: string;
