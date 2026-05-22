@@ -38,14 +38,9 @@ export default function StackedBookCarousel({
                     const pos = getIndex(index);
 
                     return (
-                        <div
-                            key={book.title}
-                            className={`card pos-${pos}`}
-                            style={{
-                                backgroundImage: `url(${book.image})`,
-                            }}
-                        >
-                            <div className="overlay">
+                        <div key={book.title} className={`card pos-${pos}`}>
+                            <div className="book-cover" style={{ backgroundImage: `url(${book.image})` }} />
+                            <div className="book-meta">
                                 <h3>{book.title}</h3>
                                 <p>{book.author}</p>
                             </div>
