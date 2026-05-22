@@ -1,6 +1,8 @@
+import { useRef } from 'react';
 import BooksPreview from '../components/book-preview/BookPreview';
 import SocialProof from '../components/social-proof/SocialProof';
 import SearchBar from '../components/search-bar/SearchBar';
+import SearchResults from '../components/search-results/SearchResults';
 
 import './LandingPage.css';
 import DEFAULT_BOOKS from '../utils/defaultBooks';
@@ -10,8 +12,13 @@ import SearchResultsSummary from '../components/search-results-summary/SearchRes
 
 const LandingPage = () => {
     const { query, setQuery, results, loading, error } = useSearch();
+    const searchResultsRef = useRef<HTMLDivElement>(null);
 
     const booksToShow = query.trim() ? results.slice(0, 4) : DEFAULT_BOOKS;
+
+    const handleSeeAll = () => {
+        searchResultsRef.current?.scrollIntoView({ behavior: 'smooth' });
+    };
 
     return (
         <div className="container-wrapper">
@@ -33,13 +40,15 @@ const LandingPage = () => {
                     </div> */}
 
                     <SocialProof />
-                    <SearchResultsSummary count={results.length} query={query} loading={loading} />
+                    <SearchResultsSummary count={results.length} query={query} loading={loading} onSeeAll={handleSeeAll} />
                 </div>
 
                 <div className='right-section'>
                     <BooksPreview books={booksToShow} loading={loading} error={error} />
                 </div>
             </div>
+
+            <SearchResults ref={searchResultsRef} results={results} query={query} loading={loading} />
         </div>
     )
 }
