@@ -1,15 +1,14 @@
-import { ReactNode } from 'react';
+import type { PropsWithChildren } from 'react';
 import './Button.css';
 
-interface ButtonProps {
-    children: ReactNode;
+interface ButtonProps extends PropsWithChildren {
     onClick?: () => void;
     disabled?: boolean;
     loading?: boolean;
     type?: 'default' | 'primary' | 'danger';
     ariaLabel?: string;
     ariaBusy?: boolean;
-    icon?: ReactNode;
+    icon?: React.ReactNode;
 }
 
 const Button = ({
