@@ -45,8 +45,8 @@
     
     background: radial-gradient(
         circle, 
-        var(--acent-transparent) 0%,   
-        var(--acent-light-transparent) 45%, 
+        var(--accent-transparent) 0%,   
+        var(--accent-light-transparent) 45%, 
         transparent 60%
     );
     

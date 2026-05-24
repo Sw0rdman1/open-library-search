@@ -2,6 +2,7 @@ import { forwardRef } from 'react';
 import type { BookPreview } from '../../types';
 import { addViewedBook } from '../../utils/history';
 import BookCard from '../book-card/BookCard';
+import Button from '../button/Button';
 import './SearchResults.css';
 
 interface Props {
@@ -43,21 +44,14 @@ const SearchResults = forwardRef<HTMLDivElement, Props>(({ results, query, loadM
 
             {hasMore && (
                 <div className="load-more-container">
-                    <button
-                        className="load-more-btn"
+                    <Button
+                        type="primary"
                         onClick={loadMore}
                         disabled={!!loading}
-                        aria-busy={!!loading}
+                        loading={!!loading}
                     >
-                        {loading ? (
-                            <>
-                                <span className="spinner" aria-hidden />
-                                <span className="btn-text">Loading...</span>
-                            </>
-                        ) : (
-                            <span className="btn-text">Load more</span>
-                        )}
-                    </button>
+                        Load more
+                    </Button>
                 </div>
             )}
         </div>

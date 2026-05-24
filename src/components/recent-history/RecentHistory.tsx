@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import type { ViewedBook } from '../../types';
 import { loadViewedBooks } from '../../utils/history';
 import BookCard from '../book-card/BookCard';
 import './RecentHistory.css';
 
-const MAX_VISIBLE_HISTORY = 6;
+const MAX_VISIBLE_HISTORY = 4;
 
 const RecentHistory = () => {
     const [recentBooks, setRecentBooks] = useState<ViewedBook[]>([]);
@@ -33,22 +32,20 @@ const RecentHistory = () => {
                     <h2>Recent history</h2>
                     <p>{recentBooks.length} book{recentBooks.length > 1 ? 's' : ''} recently viewed</p>
                 </div>
-                <Link to="/history" className="recent-history-link">
-                    See full history
-                </Link>
             </div>
 
             <div className={`recent-history-grid${recentBooks.length === 1 ? ' recent-history-single' : ''}`}>
                 {recentBooks.map((book) => (
-                    <BookCard key={book.key} book={book} size="small" />
+                    <BookCard key={book.key} book={book} size="medium" />
                 ))}
 
-                <Link to="/history" className="recent-history-card recent-history-see-all">
+                <a href="/history" className="recent-history-see-all">
                     <div className="see-all-content">
+                        <div className="see-all-icon">→</div>
                         <span>See all</span>
-                        <p>View your full history page</p>
+                        <p>View your full history</p>
                     </div>
-                </Link>
+                </a>
             </div>
         </section>
     );
