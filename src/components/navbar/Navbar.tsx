@@ -1,5 +1,6 @@
-import './Navbar.css';
 import ThemeSwitch from '../theme-switch/ThemeSwitch';
+import logo from '../../assets/logo.png';
+import './Navbar.css';
 
 const NAV_ITEMS = [
     { name: 'Browse', link: '/' },
@@ -13,7 +14,12 @@ export const Navbar: React.FC = () => {
         <nav className="navbar">
             <div className="navbar-container">
                 <div className="navbar-title">
-                    <h1>Biblios</h1>
+                    <div className="navbar-logo-group">
+                        <img src={logo} alt="Biblios logo" className="navbar-logo" />
+                        <div className="navbar-title-text">
+                            <h1>Biblios</h1>
+                        </div>
+                    </div>
                 </div>
 
                 {/* Menu items in center */}

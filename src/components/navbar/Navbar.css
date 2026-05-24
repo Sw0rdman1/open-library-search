@@ -24,9 +24,26 @@
     justify-content: flex-start;
 }
 
+.navbar-logo-group {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-logo {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.18);
+    padding: 0.45rem;
+}
+
+
+
+
 .navbar-title h1 {
   margin: 0;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   font-weight: 700;
   color: var(--accent);
   white-space: nowrap;

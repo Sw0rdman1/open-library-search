@@ -39,6 +39,15 @@
   backdrop-filter: blur(12px);
 }
 
+.card-clickable {
+  cursor: pointer;
+}
+
+.card-clickable:hover,
+.card-clickable:focus-visible {
+  transform: translate(-50%, -50%) scale(1.02);
+}
+
 .card::before {
   content: '';
   position: absolute;

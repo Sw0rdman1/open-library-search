@@ -1,6 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
+import { useNavigate } from 'react-router-dom';
 import type { BookPreview } from "../../types";
 import { getCoverUrl } from "../../utils/api";
+import { addViewedBook } from "../../utils/history";
 import { BounceLoader } from "react-spinners";
 import noResult from '../../assets/no-result.svg';
 
@@ -42,6 +44,23 @@ export default function StackedBookCarousel({ books, loading, error, interval = 
         return books.length === 0 ? 0 : (index - activeIndex + books.length) % books.length;
     };
 
+    const navigate = useNavigate();
+
+    const handleNavigation = useCallback((book: BookPreview) => {
+        addViewedBook(book);
+        const workId = book.key.split('/').pop();
+        if (workId) {
+            navigate(`/book/${workId}`);
+        }
+    }, [navigate]);
+
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>, book: BookPreview) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            handleNavigation(book);
+        }
+    };
+
     if (loading) {
         return (
             <div className="carousel-wrapper">
@@ -68,7 +87,15 @@ export default function StackedBookCarousel({ books, loading, error, interval = 
                 {books.map((book, index) => {
                     const pos = getIndex(index);
                     return (
-                        <div key={book.key} className={`card pos-${pos}`}>
+                        <div
+                            key={book.key}
+                            className={`card pos-${pos} card-clickable`}
+                            onClick={() => handleNavigation(book)}
+                            onKeyDown={(event) => handleKeyDown(event, book)}
+                            role="button"
+                            tabIndex={0}
+                            aria-label={`View details for ${book.title}`}
+                        >
                             <div className="book-cover" style={{ backgroundImage: `url(${getCoverUrl(book.coverId)})` }} />
                             <div className="book-meta">
                                 <h3>{book.title}</h3>
