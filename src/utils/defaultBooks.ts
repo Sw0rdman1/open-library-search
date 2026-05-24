@@ -2,28 +2,28 @@ import type { BookPreview } from "../types";
 
 const DEFAULT_BOOKS: BookPreview[] = [
     {
-        key: '/works/OL45883W',
+        key: '/works/OL468431W',
         title: 'The Great Gatsby',
         author_name: ['F. Scott Fitzgerald'],
-        coverId: 5426196,
+        coverId: 10590366,
     },
     {
-        key: '/works/OL82563W',
+        key: '/works/OL3140822W',
         title: 'To Kill a Mockingbird',
         author_name: ['Harper Lee'],
-        coverId: 8225261,
+        coverId: 14351077,
     },
     {
-        key: '/works/OL153586W',
+        key: '/works/OL11326416W',
         title: '1984',
         author_name: ['George Orwell'],
-        coverId: 7222246,
+        coverId: 8745958,
     },
     {
-        key: '/works/OL45884W',
+        key: '/works/OL15165350W',
         title: 'Pride and Prejudice',
         author_name: ['Jane Austen'],
-        coverId: 8231851,
+        coverId: 13148521,
     },
 ];
 

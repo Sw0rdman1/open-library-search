@@ -34,7 +34,6 @@ export function useSearch() {
         const trimmed = query.trim();
         setSearchParams(trimmed ? { q: trimmed } : {});
 
-        // reset when query cleared
         if (!trimmed) {
             setResults([]);
             setLoading(false);
@@ -65,6 +64,9 @@ export function useSearch() {
                 }
 
                 const withCovers = removeBooksWithoutCovers(docs);
+
+                console.log(withCovers);
+
 
                 setResults(withCovers);
                 setError(null);
