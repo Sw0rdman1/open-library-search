@@ -17,7 +17,6 @@
     cursor: not-allowed;
 }
 
-/* Default type */
 .btn-default {
     border: 1px solid var(--border-color, #dcdcdc);
     background: transparent;
@@ -28,7 +27,6 @@
     background: var(--bg-secondary, #f2f2f2);
 }
 
-/* Primary type */
 .btn-primary {
     background: var(--accent, #3470e6);
     color: white;
@@ -40,7 +38,6 @@
     box-shadow: 0 10px 24px rgba(52, 112, 230, 0.22);
 }
 
-/* Danger type (red) */
 .btn-danger {
     border: 1px solid #ef4444;
     background: transparent;

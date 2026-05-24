@@ -1,6 +1,5 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { BounceLoader } from 'react-spinners';
-import { useBookDetails } from '../hooks/useBookDetails';
 import {
     getAuthors,
     getDescription,
@@ -10,6 +9,7 @@ import {
 } from '../utils/bookDetails';
 import Button from '../components/button/Button';
 import './BookDetailsPage.css';
+import { useBookDetails } from '../hooks/useBookDetails';
 
 const BACK_ICON = (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
