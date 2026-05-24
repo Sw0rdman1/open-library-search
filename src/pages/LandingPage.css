@@ -186,6 +186,10 @@
         align-items: center;
     }
 
+    .right-section {
+        display: none;
+    }
+
     .title-container h1,
     .title-container p {
         text-align: center;
