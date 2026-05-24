@@ -69,4 +69,6 @@ interface BookData {
     subjects?: string[];
 }
 
-export type { Theme, AvatarGender, SearchResult, BookDetails, BookPreview, ViewedBook, WorkAuthorEntry, WorkData, EditionData, BookData };
+type HistoryGroupKey = 'today' | 'yesterday' | 'last-week' | 'last-month' | 'older';
+
+export type { Theme, AvatarGender, SearchResult, BookDetails, BookPreview, ViewedBook, WorkAuthorEntry, WorkData, EditionData, BookData, HistoryGroupKey };

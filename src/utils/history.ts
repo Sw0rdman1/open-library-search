@@ -1,9 +1,7 @@
-import type { BookPreview, ViewedBook } from '../types';
+import type { BookPreview, HistoryGroupKey, ViewedBook } from '../types';
 
-const HISTORY_STORAGE_KEY = 'biblios_history';
+const HISTORY_STORAGE_KEY = 'viewed_books';
 const HISTORY_LIMIT = 20;
-
-type HistoryGroupKey = 'today' | 'yesterday' | 'last-week' | 'last-month' | 'older';
 
 export interface ViewedBookGroup {
   label: string;

@@ -18,10 +18,7 @@ const generateAvatar = (seed: number) => {
     return `${AVATAR_URL}/${gender}/${id}.jpg`;
 };
 
-export const getRandomAvatars = (
-    count: number,
-    seed = Date.now()
-): string[] => {
+export const getRandomAvatars = (count: number, seed = Date.now()): string[] => {
     return Array.from({ length: count }, (_, index) =>
         generateAvatar(seed + index * 13)
     );
