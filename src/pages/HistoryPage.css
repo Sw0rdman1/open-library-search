@@ -83,11 +83,12 @@
 }
 
 .group-title {
-  font-size: 1.3rem;
+  font-size: 1.6rem;
   font-weight: 600;
   color: var(--text-primary, #1a1a1a);
   margin: 0 0 1.5rem;
   text-transform: capitalize;
+  text-align: left;
 }
 
 .history-grid {

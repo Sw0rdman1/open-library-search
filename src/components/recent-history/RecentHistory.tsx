@@ -8,9 +8,11 @@ const MAX_VISIBLE_HISTORY = 4;
 
 const RecentHistory = () => {
     const [recentBooks, setRecentBooks] = useState<ViewedBook[]>([]);
+    const [totalBooks, setTotalBooks] = useState(0);
 
     useEffect(() => {
         const loaded = loadViewedBooks();
+        setTotalBooks(loaded.length);
         setRecentBooks(loaded.slice(0, MAX_VISIBLE_HISTORY));
     }, []);
 
@@ -30,7 +32,7 @@ const RecentHistory = () => {
             <div className="recent-history-header">
                 <div>
                     <h2>Recent history</h2>
-                    <p>{recentBooks.length} book{recentBooks.length > 1 ? 's' : ''} recently viewed</p>
+                    <p>{totalBooks} book{totalBooks > 1 ? 's' : ''} recently viewed</p>
                 </div>
             </div>
 
