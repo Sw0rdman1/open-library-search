@@ -156,6 +156,11 @@
 
 @media (max-width: 768px) {
   .recent-history-grid {
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    grid-template-columns: repeat(2, minmax(140px, 1fr));
+  }
+
+  .recent-history-grid.recent-history-single {
+    grid-template-columns: repeat(2, minmax(140px, 1fr));
+    justify-content: flex-start;
   }
 }

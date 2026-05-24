@@ -11,7 +11,7 @@ const SocialProof = () => {
     return (
         <div className="social-proof-wrapper">
             <div className="info-container">
-                <Book color='var(--accent)' size={16} />
+                <Book color='var(--accent)' size={24} />
                 <p>Discover millions of books around the world and find your next favorite read</p>
             </div>
             <div className="social-proof-container">

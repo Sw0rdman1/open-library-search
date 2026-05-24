@@ -24,7 +24,7 @@ const HistoryPage = () => {
         <div className="history-page-container">
             <div className="history-header-section">
                 <div className="history-header-content">
-                    <h1>History</h1>
+                    <h1 className="history-title">History</h1>
                     <p className="history-count">{history.length} book{history.length === 1 ? '' : 's'} you have viewed</p>
                 </div>
                 {history.length > 0 && (
