@@ -12,7 +12,7 @@ import SearchResultsSummary from '../components/search-results-summary/SearchRes
 
 
 const LandingPage = () => {
-    const { query, setQuery, results, loading, error } = useSearch();
+    const { query, setQuery, results, loading, error, loadMore, hasMore } = useSearch();
     const searchResultsRef = useRef<HTMLDivElement>(null);
 
     const booksToShow = query.trim() ? results.slice(0, 4) : DEFAULT_BOOKS;
@@ -48,7 +48,7 @@ const LandingPage = () => {
                     <BooksPreview books={booksToShow} loading={loading} error={error} />
                 </div>
             </div>
-            <SearchResults ref={searchResultsRef} results={results} query={query} />
+            <SearchResults ref={searchResultsRef} results={results} query={query} loadMore={loadMore} hasMore={hasMore} loading={loading} />
             <RecentHistory />
         </div>
     )

@@ -3,6 +3,7 @@ import type { BookPreview } from '../types';
 import { removeBooksWithoutCovers } from '../utils/api';
 
 const DEBOUNCE_MS = 400;
+const PAGE_LIMIT = 100;
 
 
 export function useSearch() {
@@ -10,15 +11,33 @@ export function useSearch() {
     const [results, setResults] = useState<BookPreview[]>([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
+    const [page, setPage] = useState(1);
+    const [totalFound, setTotalFound] = useState<number | null>(null);
     const abortRef = useRef<AbortController | null>(null);
+
+    const fetchPage = async (q: string, pageToFetch = 1, signal?: AbortSignal) => {
+        const res = await fetch(
+            `https://openlibrary.org/search.json?title=${encodeURIComponent(q)}&limit=${PAGE_LIMIT}&page=${pageToFetch}`,
+            { signal }
+        );
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        const docs = data.docs || [];
+        const total = typeof data.numFound === 'number' ? data.numFound : (data.num_found ?? null);
+        return { docs, total } as { docs: any[]; total: number | null };
+    };
 
     useEffect(() => {
         const trimmed = query.trim();
 
+        // reset when query cleared
         if (!trimmed) {
             setResults([]);
             setLoading(false);
             setError(null);
+            setPage(1);
+            setTotalFound(null);
+            abortRef.current?.abort();
             return;
         }
 
@@ -30,32 +49,27 @@ export function useSearch() {
 
             try {
                 setLoading(true);
+                setPage(1);
 
-                const res = await fetch(
-                    `https://openlibrary.org/search.json?title=${encodeURIComponent(trimmed)}&limit=30`,
-                    { signal: abortRef.current.signal }
-                );
-                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                const { docs, total } = await fetchPage(trimmed, 1, abortRef.current.signal);
 
-                const data = await res.json();
-
-                console.log(data);
-
-
-                if (!data.docs || data.docs.length === 0) {
+                if (!docs || docs.length === 0) {
                     setResults([]);
                     setError('Sorry, no results found.');
+                    setTotalFound(total);
                     return;
                 }
 
-                const withCovers = removeBooksWithoutCovers(data.docs);
+                const withCovers = removeBooksWithoutCovers(docs);
 
                 setResults(withCovers);
                 setError(null);
+                setTotalFound(total);
             } catch (err) {
                 if (err instanceof Error && err.name !== 'AbortError') {
                     setError('Something went wrong. Please try again.');
                     setResults([]);
+                    setTotalFound(null);
                 }
             } finally {
                 setLoading(false);
@@ -69,5 +83,61 @@ export function useSearch() {
         };
     }, [query]);
 
-    return { query, setQuery, results, loading, error };
+    const hasMore = totalFound != null ? page * PAGE_LIMIT < totalFound : false;
+
+    const loadMore = async () => {
+        const trimmed = query.trim();
+        if (!trimmed) return;
+        if (loading) return;
+        if (!hasMore) return;
+
+        // we'll try to fetch up to a few pages to find more items WITH covers
+        const MAX_SCAN_PAGES = 5;
+        let nextPage = page + 1;
+        let scanned = 0;
+        let appended: BookPreview[] = [];
+
+        setLoading(true);
+        try {
+            while (scanned < MAX_SCAN_PAGES) {
+                abortRef.current?.abort();
+                abortRef.current = new AbortController();
+
+                const { docs, total } = await fetchPage(trimmed, nextPage, abortRef.current.signal);
+                setTotalFound(total);
+
+                if (docs && docs.length > 0) {
+                    const withCovers = removeBooksWithoutCovers(docs);
+                    if (withCovers.length > 0) {
+                        appended = appended.concat(withCovers);
+                    }
+                }
+
+                scanned += 1;
+                nextPage += 1;
+
+                // stop early if we've reached the API total
+                if (total != null && (nextPage - 1) * PAGE_LIMIT >= total) break;
+
+                // if we found some covered books this iteration, stop scanning further pages
+                if (appended.length > 0) break;
+            }
+
+            if (appended.length > 0) {
+                setResults((prev) => prev.concat(appended));
+                setPage(nextPage - 1);
+            } else {
+                // even if we didn't find covered books, advance page to reflect scanned pages
+                setPage(nextPage - 1);
+            }
+        } catch (err) {
+            if (err instanceof Error && err.name !== 'AbortError') {
+                setError('Something went wrong. Please try again.');
+            }
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    return { query, setQuery, results, loading, error, loadMore, hasMore, totalFound } as const;
 }
