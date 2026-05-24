@@ -31,4 +31,42 @@ interface ViewedBook extends BookPreview {
     viewedAt: number;
 }
 
-export type { Theme, AvatarGender, SearchResult, BookDetails, BookPreview, ViewedBook };
+interface WorkAuthorEntry {
+    author: {
+        key: string;
+    };
+}
+
+interface WorkData {
+    title: string;
+    description?: string | { value: string };
+    covers?: number[];
+    first_publish_date?: string;
+    first_publication_year?: number;
+    number_of_pages?: number;
+    authors?: WorkAuthorEntry[];
+    subjects?: string[];
+}
+
+interface EditionData {
+    publishers?: string[];
+    isbn_13?: string[];
+    isbn?: string[];
+    number_of_pages?: number;
+    publish_date?: string;
+}
+
+interface BookData {
+    title: string;
+    description?: string | { value: string };
+    covers?: number[];
+    first_publish_date?: string;
+    number_of_pages?: number;
+    authors: string[];
+    publishers: string[];
+    isbn_13: string[];
+    isbn: string[];
+    subjects?: string[];
+}
+
+export type { Theme, AvatarGender, SearchResult, BookDetails, BookPreview, ViewedBook, WorkAuthorEntry, WorkData, EditionData, BookData };
