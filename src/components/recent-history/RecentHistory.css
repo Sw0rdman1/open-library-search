@@ -18,12 +18,14 @@
   margin: 0;
   font-size: 1.75rem;
   color: var(--text-primary, #1a1a1a);
+  line-clamp: 3
 }
 
 .recent-history-header p {
   margin: 0.35rem 0 0;
   color: var(--text-secondary, #666);
   font-size: 0.95rem;
+  line-clamp: 2;
 }
 
 .recent-history-link {
