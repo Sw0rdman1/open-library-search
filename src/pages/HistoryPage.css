@@ -130,20 +130,11 @@
 
   .history-header-content {
     padding: 0 1rem;
-    width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-  }
-
-  .history-header-content h1 {
-    font-size: 1.6rem;
   }
 
   .clear-history {
     margin-right: 0;
-    margin-left: 0;
-    align-self: flex-start;
+    margin-left: 1rem;
   }
 
   .history-groups {
@@ -154,120 +145,19 @@
     grid-template-columns: repeat(3, minmax(120px, 1fr));
     gap: 1.5rem;
   }
-
-  .group-title {
-    font-size: 1.4rem;
-  }
-}
-
-@media (max-width: 640px) {
-  .history-header-section {
-    padding: 1.2rem 0;
-  }
-
-  .history-header-content {
-    padding: 0 0.8rem;
-    gap: 0.8rem;
-  }
-
-  .history-header-content h1 {
-    font-size: 1.3rem;
-    margin-bottom: 0.3rem;
-  }
-
-  .history-count {
-    font-size: 0.9rem;
-  }
-
-  .history-groups {
-    padding: 1.5rem 0.8rem;
-  }
-
-  .history-group {
-    margin-bottom: 2rem;
-  }
-
-  .history-grid {
-    grid-template-columns: repeat(3, minmax(110px, 1fr));
-    gap: 1.2rem;
-  }
-
-  .group-title {
-    font-size: 1.2rem;
-    margin-bottom: 1.2rem;
-  }
-
-  .history-empty {
-    padding: 2rem 1rem;
-    border-radius: 14px;
-    margin: 2rem auto 0;
-  }
 }
 
 @media (max-width: 480px) {
-  .history-header-section {
-    padding: 1rem 0;
-  }
-
-  .history-header-content {
-    padding: 0 0.6rem;
-    gap: 0.6rem;
-  }
-
-  .history-header-content h1 {
-    font-size: 1.1rem;
-  }
-
-  .history-header-content p {
-    font-size: 0.9rem;
-  }
-
-  .history-count {
-    font-size: 0.85rem;
-    margin-top: 0.3rem;
-  }
-
-  .history-groups {
-    padding: 1.2rem 0.6rem;
-  }
-
-  .history-group {
-    margin-bottom: 1.5rem;
-  }
-
   .history-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
 
-  .group-title {
-    font-size: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  .history-empty {
-    padding: 1.5rem 1rem;
-    border-radius: 12px;
-    margin: 1.5rem auto 0;
-    font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 360px) {
   .history-header-content h1 {
-    font-size: 1rem;
-  }
-
-  .history-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.8rem;
+    font-size: 1.5rem;
   }
 
   .group-title {
-    font-size: 0.95rem;
-  }
-
-  .history-empty {
-    padding: 1.2rem 0.8rem;
+    font-size: 1.1rem;
   }
 }

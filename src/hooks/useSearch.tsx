@@ -34,6 +34,7 @@ export function useSearch() {
         const trimmed = query.trim();
         setSearchParams(trimmed ? { q: trimmed } : {});
 
+        // reset when query cleared
         if (!trimmed) {
             setResults([]);
             setLoading(false);
@@ -94,6 +95,7 @@ export function useSearch() {
         if (loading) return;
         if (!hasMore) return;
 
+        // we'll try to fetch up to a few pages to find more items WITH covers
         const MAX_SCAN_PAGES = 5;
         let nextPage = page + 1;
         let scanned = 0;
@@ -118,8 +120,10 @@ export function useSearch() {
                 scanned += 1;
                 nextPage += 1;
 
+                // stop early if we've reached the API total
                 if (total != null && (nextPage - 1) * PAGE_LIMIT >= total) break;
 
+                // if we found some covered books this iteration, stop scanning further pages
                 if (appended.length > 0) break;
             }
 
@@ -127,6 +131,7 @@ export function useSearch() {
                 setResults((prev) => prev.concat(appended));
                 setPage(nextPage - 1);
             } else {
+                // even if we didn't find covered books, advance page to reflect scanned pages
                 setPage(nextPage - 1);
             }
         } catch (err) {

@@ -177,15 +177,9 @@
 }
 
 @media (max-width: 768px) {
-    .container-wrapper {
-        gap: 1.5rem;
-    }
-
     .hero-section {
         flex-direction: column;
         text-align: center;
-        padding: 1.5rem;
-        gap: 2rem;
     }
 
     .left-section {
@@ -196,32 +190,9 @@
         display: none;
     }
 
-    .title-container h1 {
-        font-size: 2.5rem;
-        text-align: center;
-    }
-
+    .title-container h1,
     .title-container p {
         text-align: center;
-        font-size: 1rem;
-    }
-
-    .accent {
-        font-size: 2rem;
-    }
-
-    .search-container {
-        height: 50px;
-        font-size: 1rem;
-    }
-
-    .search-container input {
-        font-size: 1rem;
-        padding: 0 1.2rem;
-    }
-
-    .search-container button {
-        font-size: 0.9rem;
     }
 
     .tags-container, .social-proof-container {
@@ -230,108 +201,5 @@
 
     .central-glow {
         display: none;
-    }
-
-    .results-container {
-        padding: 0 1rem;
-        max-width: 100%;
-    }
-}
-
-@media (max-width: 640px) {
-    .container-wrapper {
-        gap: 1.2rem;
-    }
-
-    .hero-section {
-        padding: 1rem;
-        gap: 1.5rem;
-    }
-
-    .title-container h1 {
-        font-size: 2rem;
-        line-height: 1.2;
-    }
-
-    .accent {
-        font-size: 1.5rem;
-    }
-
-    .title-container p {
-        font-size: 0.95rem;
-    }
-
-    .search-container {
-        height: 48px;
-        margin-top: 1.2rem;
-    }
-
-    .search-container input {
-        padding: 0 1rem;
-    }
-
-    .tags-container {
-        gap: 0.6rem;
-    }
-
-    .tag-pill {
-        padding: 0.35rem 0.9rem;
-        font-size: 0.85rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .container-wrapper {
-        min-height: auto;
-        gap: 1rem;
-        padding: 0.5rem 0;
-    }
-
-    .hero-section {
-        padding: 0.8rem;
-        gap: 1.2rem;
-    }
-
-    .title-container h1 {
-        font-size: 1.6rem;
-        margin: 0.5rem 0 0 0;
-    }
-
-    .accent {
-        font-size: 1.2rem;
-    }
-
-    .title-container p {
-        font-size: 0.85rem;
-        margin-top: 0.3rem;
-    }
-
-    .search-container {
-        height: 44px;
-        margin-top: 1rem;
-        border-radius: 20px;
-    }
-
-    .search-container input {
-        font-size: 16px;
-        padding: 0 1rem;
-    }
-
-    .search-container button {
-        font-size: 0.85rem;
-    }
-
-    .tags-container {
-        gap: 0.5rem;
-        margin-top: 0.8rem;
-    }
-
-    .tag-pill {
-        padding: 0.3rem 0.8rem;
-        font-size: 0.75rem;
-    }
-
-    .results-container {
-        padding: 0 0.5rem;
     }
 }

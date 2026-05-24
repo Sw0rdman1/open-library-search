@@ -33,6 +33,13 @@ const LandingPage = () => {
 
                     <SearchBar value={query} onChange={setQuery} loading={loading} />
 
+                    {/* <div className="tags-container">
+                        <button className="tag-pill">Trileri</button>
+                        <button className="tag-pill">Fantastika</button>
+                        <button className="tag-pill">Klasici</button>
+                        <button className="tag-pill">Misterija</button>
+                    </div> */}
+
                     <SocialProof />
                     <SearchResultsSummary count={results.length} query={query} loading={loading} onSeeAll={handleSeeAll} />
                 </div>

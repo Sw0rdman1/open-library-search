@@ -22,6 +22,7 @@ export const Navbar: React.FC = () => {
                     </a>
                 </div>
 
+                {/* Menu items in center */}
                 <div className="navbar-menu">
                     {NAV_ITEMS.map((item) => (
                         <a key={item.name} href={item.link} className={`menu-item ${currentPath === item.link ? 'active' : ''}`}>
