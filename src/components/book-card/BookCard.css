@@ -47,6 +47,7 @@
   display: -webkit-box;
   -webkit-box-orient: vertical;
   line-clamp: 3;
+  -webkit-line-clamp: 3;
   overflow: hidden;
   word-break: break-word;
 }
@@ -58,6 +59,7 @@
   display: -webkit-box;
   -webkit-box-orient: vertical;
   line-clamp: 3;
+  -webkit-line-clamp: 3;
   overflow: hidden;
   word-break: break-word;
 }
