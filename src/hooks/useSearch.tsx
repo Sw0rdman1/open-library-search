@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import type { BookPreview, SearchResult } from '../types';
+import type { BookPreview } from '../types';
+import { removeBooksWithoutCovers } from '../utils/api';
 
 const DEBOUNCE_MS = 400;
 
@@ -29,6 +30,7 @@ export function useSearch() {
 
             try {
                 setLoading(true);
+
                 const res = await fetch(
                     `https://openlibrary.org/search.json?title=${encodeURIComponent(trimmed)}&limit=30`,
                     { signal: abortRef.current.signal }
@@ -37,19 +39,16 @@ export function useSearch() {
 
                 const data = await res.json();
 
+                console.log(data);
+
+
                 if (!data.docs || data.docs.length === 0) {
                     setResults([]);
                     setError('Sorry, no results found.');
                     return;
                 }
 
-                const withCovers: BookPreview[] =
-                    data.docs.filter(
-                        (b: SearchResult) => b.cover_i != null
-                    ).map((book: SearchResult) => ({
-                        ...book,
-                        coverId: book.cover_i
-                    }));
+                const withCovers = removeBooksWithoutCovers(data.docs);
 
                 setResults(withCovers);
                 setError(null);

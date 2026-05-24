@@ -23,7 +23,6 @@ const SearchResults = forwardRef<HTMLDivElement, Props>(({ results, query }, ref
             <div className="search-results-header">
                 <h2>Search Results for "{query}"</h2>
                 <p className="results-count">{results.length} results found</p>
-                <p className="search-results-note">Click a book card to save it to your history.</p>
             </div>
 
             <div className="search-results-grid">

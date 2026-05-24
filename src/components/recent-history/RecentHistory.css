@@ -1,7 +1,6 @@
 .recent-history-container {
   width: 100%;
-  max-width: 1200px;
-  margin: 2rem auto 0;
+  max-width: 1100px;
   padding: 0 1rem;
   box-sizing: border-box;
 }
@@ -83,9 +82,12 @@
 }
 
 .recent-history-empty-state {
-  background: var(--bg-secondary, #f7f5f1);
+  height: 300px;
+  display: flex;
+  flex-direction: column;
   border-radius: 18px;
   padding: 1.5rem;
+  text-align: start;
   color: var(--text-secondary, #666);
 }
 
