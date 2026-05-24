@@ -1,6 +1,5 @@
 import { forwardRef } from 'react';
 import type { BookPreview } from '../../types';
-import { addViewedBook } from '../../utils/history';
 import BookCard from '../book-card/BookCard';
 import Button from '../button/Button';
 import './SearchResults.css';
@@ -18,10 +17,6 @@ const SearchResults = forwardRef<HTMLDivElement, Props>(({ results, query, loadM
         return null;
     }
 
-    const handleBookClick = (book: BookPreview) => {
-        addViewedBook(book);
-    };
-
     return (
         <div className="search-results-container" ref={ref}>
             <div className="search-results-header">
@@ -37,7 +32,6 @@ const SearchResults = forwardRef<HTMLDivElement, Props>(({ results, query, loadM
                         key={book.key}
                         book={book}
                         size="medium"
-                        onClick={() => handleBookClick(book)}
                     />
                 ))}
             </div>
