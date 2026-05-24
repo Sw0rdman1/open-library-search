@@ -39,7 +39,7 @@
 }
 
 .recent-history-grid.recent-history-single {
-  grid-template-columns: repeat(2, minmax(180px, 1fr));
+  grid-template-columns: repeat(5, minmax(180px, 1fr));
   justify-content: flex-start;
 }
 
