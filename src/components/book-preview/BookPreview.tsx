@@ -2,11 +2,11 @@ import { useEffect, useState, useCallback } from "react";
 import { useNavigate } from 'react-router-dom';
 import type { BookPreview } from "../../types";
 import { getCoverUrl } from "../../utils/api";
-import { addViewedBook } from "../../utils/history";
 import { BounceLoader } from "react-spinners";
 import noResult from '../../assets/no-result.svg';
 
 import './BookPreview.css';
+import { useHistory } from "../../context/ViewedBooksContext";
 
 
 interface Props {
@@ -16,9 +16,10 @@ interface Props {
     interval?: number;
 }
 
-export default function StackedBookCarousel({ books, loading, error, interval = 3000 }: Props) {
+export default function BookPreview({ books, loading, error, interval = 3000 }: Props) {
     const [activeIndex, setActiveIndex] = useState(0);
     const [stackKey, setStackKey] = useState(0);
+    const { addBook } = useHistory();
 
     const next = () => {
         if (books.length === 0) return;
@@ -47,12 +48,12 @@ export default function StackedBookCarousel({ books, loading, error, interval = 
     const navigate = useNavigate();
 
     const handleNavigation = useCallback((book: BookPreview) => {
-        addViewedBook(book);
+        addBook(book);
         const workId = book.key.split('/').pop();
         if (workId) {
             navigate(`/book/${workId}`);
         }
-    }, [navigate]);
+    }, [navigate, addBook]);
 
     const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>, book: BookPreview) => {
         if (event.key === 'Enter' || event.key === ' ') {

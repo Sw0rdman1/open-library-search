@@ -3,6 +3,7 @@ import type { BookPreview } from '../../types';
 import BookCard from '../book-card/BookCard';
 import Button from '../button/Button';
 import './SearchResults.css';
+import { useHistory } from '../../context/ViewedBooksContext';
 
 interface Props {
     results: BookPreview[];
@@ -13,6 +14,8 @@ interface Props {
 }
 
 const SearchResults = forwardRef<HTMLDivElement, Props>(({ results, query, loadMore, hasMore, loading }, ref) => {
+    const { addBook } = useHistory();
+
     if (!query.trim()) {
         return null;
     }
@@ -32,6 +35,7 @@ const SearchResults = forwardRef<HTMLDivElement, Props>(({ results, query, loadM
                         key={book.key}
                         book={book}
                         size="medium"
+                        onClick={() => addBook(book)}
                     />
                 ))}
             </div>
