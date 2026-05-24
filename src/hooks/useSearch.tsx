@@ -1,19 +1,22 @@
 import { useState, useEffect, useRef } from 'react';
 import type { BookPreview } from '../types';
 import { removeBooksWithoutCovers } from '../utils/api';
+import { useSearchParams } from 'react-router-dom';
 
 const DEBOUNCE_MS = 400;
 const PAGE_LIMIT = 100;
 
 
 export function useSearch() {
-    const [query, setQuery] = useState('');
+    const [searchParams, setSearchParams] = useSearchParams();
+    const [query, setQuery] = useState(searchParams.get("q") || '');
     const [results, setResults] = useState<BookPreview[]>([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [page, setPage] = useState(1);
     const [totalFound, setTotalFound] = useState<number | null>(null);
     const abortRef = useRef<AbortController | null>(null);
+
 
     const fetchPage = async (q: string, pageToFetch = 1, signal?: AbortSignal) => {
         const res = await fetch(
@@ -29,6 +32,7 @@ export function useSearch() {
 
     useEffect(() => {
         const trimmed = query.trim();
+        setSearchParams(trimmed ? { q: trimmed } : {});
 
         // reset when query cleared
         if (!trimmed) {

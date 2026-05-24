@@ -19,7 +19,7 @@
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    border: 2px solid var(--bg-secondary, #ffffff);
+    border: 2px solid var(--bg-primary, #ffffff);
     margin-left: -12px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }

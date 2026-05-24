@@ -2,6 +2,7 @@
     width: 100%;
     border-top: 1px solid var(--border-color, #e5e5e5);
     box-sizing: border-box;
+    padding-bottom: 2rem;
 }
 
 .search-results-header {
@@ -110,10 +111,6 @@
     overflow: hidden;
 }
 
-/* Dark mode support */
-:root[data-theme="dark"] .search-results-container {
-    background: var(--bg-secondary, #1a1a1a);
-}
 
 :root[data-theme="dark"] .search-results-header h2 {
     color: var(--text-primary, #ffffff);

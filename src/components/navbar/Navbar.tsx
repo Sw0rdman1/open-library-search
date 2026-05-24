@@ -14,12 +14,12 @@ export const Navbar: React.FC = () => {
         <nav className="navbar">
             <div className="navbar-container">
                 <div className="navbar-title">
-                    <div className="navbar-logo-group">
+                    <a href="/" className="navbar-logo-group">
                         <img src={logo} alt="Biblios logo" className="navbar-logo" />
                         <div className="navbar-title-text">
                             <h1>Biblios</h1>
                         </div>
-                    </div>
+                    </a>
                 </div>
 
                 {/* Menu items in center */}
@@ -31,7 +31,9 @@ export const Navbar: React.FC = () => {
                     ))}
                 </div>
 
-                <ThemeSwitch />
+                <div className='navbar-theme'>
+                    <ThemeSwitch />
+                </div>
             </div>
         </nav>
     );

@@ -36,7 +36,7 @@
 .central-glow {
     position: absolute;
     top: 50%;
-    left: 65%;
+    left: 70%;
     transform: translate(-50%, -50%);
     
     width: 900px; 
